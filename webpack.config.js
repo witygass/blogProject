@@ -2,15 +2,15 @@ const path = require('path');
 
 module.exports = {
   context: path.join(__dirname, 'src'),
-  entry: ['./main.js', ],
+  entry: ['./main.jsx', ],
   output: {
-    path: path.join(__dirname, 'www'),
+    path: path.join(__dirname, 'client'),
     filename: 'bundle.js',
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx$/,
         exclude: /node_modules/,
         use: [
           'babel-loader',
