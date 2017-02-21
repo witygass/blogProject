@@ -4,7 +4,7 @@ import Home from './components/Home.jsx';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    React.createElement(Home),
+    <Home />,
     document.getElementById('app')
   );
 });

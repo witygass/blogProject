@@ -1,4 +1,6 @@
 import React from 'react';
+import NavBar from './NavBar.jsx';
+import FontAwesome from 'react-fontawesome';
 
 class Home extends React.Component {
   constructor() {
@@ -11,25 +13,35 @@ class Home extends React.Component {
   render() {
     return (
       <div style={styles.container}>
-        <div>
-          <img src='./images/appPreview.jpg' style={styles.image}></img>
+        <NavBar/>
+        <div style={styles.contentContainer}>
         </div>
       </div>
     );
   }
 }
+
 export default Home;
 
 const styles = {
   container: {
+    backgroundColor: 'cadetblue'
+  },
+  contentContainer: {
+    height: '100%',
     flex: 1,
-    backgroundColor: 'cyan',
+    // display: 'inline-flex',
+    backgroundColor: 'mistyrose',
     flexDirection: 'row',
-    alignContent: 'center',
-    justifyContent: 'center'
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  imgDiv: {
+    height: 100,
+    width: 400
   },
   image: {
-    height: 100
+    height: 100,
     // width: 500
   }
 };
