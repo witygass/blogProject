@@ -1,47 +1,73 @@
 import React from 'react';
-import NavBar from './NavBar.jsx';
-import FontAwesome from 'react-fontawesome';
+import HeaderBox from './HeaderBox.jsx';
+import PostEntry from './PostEntry.jsx';
+import myPosts from '../dummyData.js';
 
 class Home extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      count: 0,
     };
   }
 
   render() {
     return (
-      <div style={styles.container}>
-        <NavBar/>
-        <div style={styles.contentContainer}>
+      <div className={'homePageContainer'} style={styles.container}>
+        <div style={styles.leftColumn}>
+          <HeaderBox text={'Tags'} />
+        </div>
+        <div style={styles.middleColumn}>
+          <HeaderBox text={'Recent Posts'} />
+          {
+            myPosts.map((post) =>
+              <PostEntry key={post.id} post={post} />
+            )
+          }
+        </div>
+        <div style={styles.rightColumn}>
+          <HeaderBox text={'About'}/>
         </div>
       </div>
     );
   }
 }
 
-export default Home;
-
 const styles = {
   container: {
-    backgroundColor: 'cadetblue'
-  },
-  contentContainer: {
-    height: '100%',
-    flex: 1,
-    // display: 'inline-flex',
-    backgroundColor: 'mistyrose',
+    display: 'inline-flex',
     flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    minHeight: '100%',
+    width: '100%',
+  },
+  leftColumn: {
+    // flex: '1',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end',
+    // borderRight: '1px solid black',
+    width: '19%',
+    marginLeft: '1%',
+  },
+  middleColumn: {
+    // flex: '1',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    justifyContent: 'space-around'
+    // borderRight: '1px solid black',
+    width: '55%',
   },
-  imgDiv: {
-    height: 100,
-    width: 400
+  rightColumn: {
+    // flex: '1',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    width: '24%',
   },
-  image: {
-    height: 100,
-    // width: 500
-  }
 };
+
+export default Home;

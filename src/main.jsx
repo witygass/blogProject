@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './components/Home.jsx';
+import Root from './components/Root.jsx';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Home />,
+    <Root />,
     document.getElementById('app')
   );
 });

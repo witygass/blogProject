@@ -1,59 +1,54 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import SearchBox from './SearchBox.jsx';
 
 var NavBar = function(props) {
-  var menuOptions = ['home', 'blog', 'projects'];
+  const menuOptions = ['home', 'blog', 'projects'];
+  const socialOptions = [{logo: 'linkedin', url: 'http://www.linkedin.com/in/tylergassman'}, {logo: 'facebook', url: 'http://www.facebook.com/sincerely.tyler'}, {logo: 'github', url: 'http://www.github.com/witygass'}, {logo: 'angellist', url: 'http://www.angel.co/witygass'}];
+
+  var linkToMedia = (url) => {
+    window.open(url);
+  };
+
+  var handlePageChange = (page) => {
+    props.handlePageChange(page);
+  };
+
   return (
     <div style={styles.container}>
       <div style={styles.left}>
-        <div className={'navBarOption'} style={styles.menuOption}>
-          home
-        </div>
-        <div className={'navBarOption'} style={styles.menuOption}>
-          blog
-        </div>
-        <div className={'navBarOption'} style={styles.menuOption}>
-          projects
-        </div>
+        {menuOptions.map((page) => <div onClick={handlePageChange.bind(null, page)} className={'navBarOption'} style={styles.menuOption} key={page}>{page}</div> )}
+      </div>
+      <div style={styles.middle}>
+        mySite
       </div>
       <div style={styles.right}>
-        <div className={'navBarOption'} style={styles.socialButton}>
-          <FontAwesome
-            className='linkedin'
-            name='linkedin'
-            size='2x'
-            />
-        </div>
-        <div className={'navBarOption'} style={styles.socialButton}>
-          <FontAwesome
-            className='facebook'
-            name='facebook'
-            size='2x'
-            />
-        </div>
-        <div className={'navBarOption'} style={styles.socialButton}>
-          <FontAwesome
-            className='github'
-            name='github'
-            size='2x'
-            />
-        </div>
-        <div className={'navBarOption'} style={styles.searchField}>
-          <form style={styles.searchForm}>
-            <input
-              style={styles.searchInput}
-              type="text"
-              placeholder="search..."
+        {socialOptions.map((social) =>
+          <div className={'navBarOption'} style={styles.socialButton} key={social.logo}>
+            <FontAwesome
+              className={social.logo}
+              name={social.logo}
+              size='2x'
+              onClick={linkToMedia.bind(null, social.url)}
               />
-          </form>
+          </div>)
+        }
+        <div id={'searchBox'} className={'navBarOption'} style={styles.searchField}>
+          <SearchBox
+            handleSearchSubmit={props.handleSearchSubmit}
+            />
         </div>
       </div>
     </div>
   );
 };
 
+export default NavBar;
+
 const styles = {
   container: {
+    position: 'fixed',
+    top: '0',
     width: '100%',
     height: '3em',
     backgroundColor: 'black',
@@ -61,16 +56,28 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'stretch',
     justifyContent: 'flex-start',
+    color: 'silver',
+    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
   },
   left: {
-    color: 'silver',
     display: 'flex',
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'stretch',
     justifyContent: 'flex-start',
   },
+  middle: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    justifyContent: 'center',
+    verticalAlign: 'middle',
+    lineHeight: '150%',
+    fontWeight: '500',
+    fontSize: '30px',
+  },
   right: {
-    color: 'silver',
     display: 'flex',
     flex: 1,
     flexDirection: 'row',
@@ -100,19 +107,4 @@ const styles = {
     marginRight: '5px',
     marginLeft: '5px',
   },
-  searchForm: {
-    width: '15em',
-    marginBottom: 0,
-  },
-  searchInput: {
-    width: '100%',
-    padding: '8px 15px',
-    boxSizing: 'border-box',
-    border: '1px solid silver',
-    borderRadius: '4px',
-    backgroundColor: 'whitesmoke',
-    fontSize: '15',
-  },
 };
-
-export default NavBar;
