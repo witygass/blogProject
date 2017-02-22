@@ -37,7 +37,7 @@ class Root extends React.Component {
             handlePageChange={this.handlePageChange}
             handleSearchSubmit={this.handleSearchSubmit}
             />
-          <div style={styles.contentContainer}>
+          <div className={'contentContainer'} style={styles.contentContainer}>
             {pageContent[this.state.page]}
           </div>
         </div>
@@ -52,20 +52,13 @@ const styles = {
   },
   contentContainer: {
     marginTop: '3em',
-    minHeight: '100% - 3em',  //this causes the margin top to break
+    minHeight: '100%',  //this causes the margin top to break
     width: '100%',
     flex: '1 auto',
     display: 'inline-flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    backgroundColor: '#f2f2f2',
   },
-  imgDiv: {
-    height: 100,
-    width: 400
-  },
-  image: {
-    height: 100,
-    // width: 500
-  }
 };

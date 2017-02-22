@@ -1,18 +1,12 @@
 import React from 'react';
 
 var AboutBox = function(props) {
-  console.log(props);
+
   return (
     <div style={props.styles.boxContainer}>
-      <div style={styles.imageContainer}></div>
+      This is my tags box
     </div>
   );
-};
-
-const styles = {
-  imageContainer: {
-
-  },
 };
 
 export default AboutBox;
