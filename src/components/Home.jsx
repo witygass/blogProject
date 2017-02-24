@@ -9,7 +9,51 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedTags: [],
+      filteredPosts: myPosts,
     };
+    this.toggleTagSelection = this.toggleTagSelection.bind(this);
+    this.filterPosts = this.filterPosts.bind(this);
+  }
+
+  collectTags() {
+    var tagList = {};
+    for (let i = 0; i < myPosts.length; i++) {
+      for (let j = 0; j < myPosts[i]['tags'].length; j++) {
+        tagList[myPosts[i]['tags'][j]] = tagList[myPosts[i]['tags'][j]] + 1 || 1;
+      }
+    }
+    return tagList;
+  }
+
+  toggleTagSelection(tagName) {
+    var selectedTags = Array.from(this.state.selectedTags);
+    var toggledTagIndex = selectedTags.indexOf(tagName);
+    if (toggledTagIndex === -1) {
+      selectedTags.push(tagName);
+    } else {
+      selectedTags.splice(toggledTagIndex, toggledTagIndex + 1);
+    }
+    this.setState({selectedTags}, this.filterPosts);
+  }
+
+  filterPosts() {
+    //still not quite working... why does post 5 show.. does not contain 'sad'
+    var filteredPosts = Array.from(myPosts);
+    var selectedTags = this.state.selectedTags;
+    if (this.state.selectedTags.length !== 0) {
+      for (let i = filteredPosts.length - 1; i >= 0; i--) {
+        for (let j = 0; j < selectedTags.length; j++) {
+          if (filteredPosts[i]['tags'].indexOf(selectedTags[j]) === -1) {
+            // console.log(filteredPosts[i]);
+            console.log(i, filteredPosts.splice(i, 1));
+            break;
+          }
+        }
+      }
+    }
+    // console.log(filteredPosts);
+    this.setState({filteredPosts});
   }
 
   render() {
@@ -17,18 +61,17 @@ class Home extends React.Component {
       <div className={'homePageContainer'} style={styles.container}>
         <div style={styles.leftColumn}>
           <HeaderBox text={'Tags'} />
-          <TagBox styles={childrenBoxStyles} />
+          <TagBox styles={childrenBoxStyles} tags={this.collectTags()} toggleTagSelection={this.toggleTagSelection} />
         </div>
         <div style={styles.middleColumn}>
           <HeaderBox text={'Recent Posts'} />
           {
-            myPosts.map((post) =>
+            this.state.filteredPosts.map((post) =>
               <PostEntry key={post.id} post={post} styles={childrenBoxStyles} />
             )
           }
         </div>
         <div style={styles.rightColumn}>
-          <HeaderBox text={'About'}/>
           <AboutBox styles={childrenBoxStyles} />
         </div>
       </div>
@@ -42,10 +85,11 @@ const styles = {
   container: {
     display: 'inline-flex',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    justifyContent: 'space-around',
+    alignItems: 'stretch',
     minHeight: '100%',
     width: '100%',
+    paddingBottom: '2em',
   },
   leftColumn: {
     display: 'flex',
@@ -54,7 +98,7 @@ const styles = {
     alignItems: 'flex-end',
     width: '20%',
     minWidth: '15em',
-    margin: '0em 1em',
+    // marginLeft: '1em',
   },
   middleColumn: {
     display: 'flex',
@@ -63,44 +107,30 @@ const styles = {
     alignItems: 'center',
     width: '55%',
     minWidth: '30em',
-    margin: '0em 1em',
+    // marginLeft: '1em',
   },
   rightColumn: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    alignItems: 'flex-end',
-    width: '25%',
-    margin: '0em 1em',
+    alignItems: 'flex-start',
+    minWidth: '20em',
+    maxWidth: '25em',
+    marginRight: '2em',
   },
 };
 
 const childrenBoxStyles = {
   boxContainer: {
-    flex: 1,
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
     border: '1px solid lightgrey',
-    borderRadius: '4px',
-    width: '85%',
-    minHeight: '11em',
-    marginBottom: '1.5em',
-    padding: '1em',
+    // borderRadius: '4px',
+    width: '90%',
+    minHeight: '10em',
+    marginTop: '1em',
     backgroundColor: 'white',
     boxShadow: '0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 4px 18px 0 rgba(0, 0, 0, 0.19)',
-  },
-  backgroundDiv: {
-    height: '5em',
-    backgoundImage: './',
-  },
-  details: {
-    flexShrink: 0,
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-  },
-  summary: {
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
   },
 };

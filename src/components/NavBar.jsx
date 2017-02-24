@@ -48,6 +48,7 @@ export default NavBar;
 const styles = {
   container: {
     position: 'fixed',
+    zIndex: '1',
     top: '0',
     width: '100%',
     height: '3em',

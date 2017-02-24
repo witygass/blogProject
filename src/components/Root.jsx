@@ -59,6 +59,6 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    backgroundColor: '#f2f2f2',
+    backgroundColor: 'whitesmoke',
   },
 };

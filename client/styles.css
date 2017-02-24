@@ -6,3 +6,6 @@ body {
 .navBarOption:hover {
   color: white;
 }
+.tag {
+  cursor: default;
+}
