@@ -1,7 +1,5 @@
 import React from 'react';
 
-var height = '10px';
-
 var AboutBox = (props) => {
   var fixedStyle = {};
   for (var key in props.styles.boxContainer) { fixedStyle[key] = props.styles.boxContainer[key]; }
@@ -65,9 +63,7 @@ const styles = {
     marginTop: '5em',
   },
   aboutHeader: {
-    // marginTop: '5px',
     fontSize: '20px',
-    fontWeight: 'bold',
     color: '#1cb06d',
     width: '60%',
     textAlign: 'center',
@@ -75,7 +71,7 @@ const styles = {
     lineHeight: '2em'
   },
   aboutSummary: {
-    // marginTop: '7px',
+    color: 'grey',
     margin: '0% 12%',
   },
 };

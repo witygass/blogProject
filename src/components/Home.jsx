@@ -64,7 +64,7 @@ class Home extends React.Component {
           <HeaderBox text={'Recent Posts'} />
           {
             this.state.filteredPosts.map((post) =>
-              <PostEntry key={post.id} post={post} styles={childrenBoxStyles} />
+              <PostEntry key={post.id} post={post} styles={childrenBoxStyles} handlePageChange={this.props.handlePageChange.bind(null, 'postView', post)}/>
             )
           }
         </div>
@@ -80,7 +80,7 @@ export default Home;
 
 const styles = {
   container: {
-    display: 'inline-flex',
+    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'stretch',

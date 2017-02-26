@@ -2,6 +2,7 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import NavBar from './NavBar.jsx';
 import Home from './Home.jsx';
+import PostView from './PostView.jsx';
 import Blog from './Blog.jsx';
 import Projects from './Projects.jsx';
 
@@ -11,7 +12,7 @@ class Root extends React.Component {
     this.state = {
       page: 'home',
       searchValue: '',
-      selectPost: '',
+      selectedPost: '',
     };
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -22,15 +23,16 @@ class Root extends React.Component {
   }
 
   handlePageChange(page) {
-    this.setState({page});
+    var selectedPost = arguments[1] || '';
+    this.setState({selectedPost}, this.setState({page}));
   }
 
   render() {
     var pageContent = {
-      home: <Home/>,
-      blog: <Blog/>,
-      projects: <Projects/>,
-      // postview: <PostView/>,
+      home: <Home handlePageChange={this.handlePageChange}/>,
+      blog: <Blog handlePageChange={this.handlePageChange}/>,
+      projects: <Projects handlePageChange={this.handlePageChange}/>,
+    postView: <PostView selectedPost={this.state.selectedPost}/>,
     };
 
     return (

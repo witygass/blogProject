@@ -6,7 +6,7 @@ var height = '10px';
 
 var PostEntry = (props) => {
   return (
-    <div className={'postEntry'} style={props.styles.boxContainer}>
+    <div className={'postEntry'} style={props.styles.boxContainer} onClick={props.handlePageChange}>
       <div style={styles.contentContainer}>
         <div style={styles.imageBox}>
           <img src={props.post.image} style={styles.image} />
@@ -94,7 +94,7 @@ const styles = {
   summaryBox: {
     fontSize: '15px',
     lineHeight: '1.2em',
-    height: '6.2em',
+    height: '6.01em',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     color: 'grey',
