@@ -1,4 +1,8 @@
 import React from 'react';
+import Tag from './Tag.jsx';
+import moment from 'moment';
+
+var height = '10px';
 
 var PostEntry = (props) => {
   return (
@@ -7,18 +11,26 @@ var PostEntry = (props) => {
         <div style={styles.imageBox}>
           <img src={props.post.image} style={styles.image} />
         </div>
-        <div style={styles.header}>
-          <div style={styles.title}>
-            {props.post.title}
+        <div style={styles.details}>
+          <div style={styles.header}>
+            <div style={styles.title}>
+              {props.post.title}
+            </div>
+            <div style={styles.date}>
+              { moment(props.post.date, 'YYYYMMDD').fromNow() }
+            </div>
           </div>
-          <div style={styles.date}>
-            {props.post.date}
-          </div>
-        </div>
-        <div style={styles.summary}>
-          <p style={styles.summaryParagraph}>
+          <div style={styles.summaryBox}>
             {props.post.body}
-          </p>
+          </div>
+          <div style={styles.readMore}>
+            <div className={'navBarOption'}>
+              Read More...
+            </div>
+          </div>
+          <div style={styles.tagBox}>
+            tags: {props.post.tags.map((tag) => <span key={tag} style={styles.tags}>{tag + ' '}</span>)}
+          </div>
         </div>
       </div>
     </div>
@@ -29,41 +41,73 @@ export default PostEntry;
 
 const styles = {
   contentContainer: {
-    margin: '1em 2em',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    margin: '1em 1em',
+    height: '25em',
   },
   imageBox: {
-    maxHeight: '5em',
+    flex: '1',
     overflow: 'hidden',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    backgroundColor: 'whitesmoke',
   },
   image: {
-    height: '5em',
+    position: 'relative',
+    width: '100%',
   },
   details: {
-    flexShrink: 0,
+    marginTop: '8px',
+    flex: '1',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     overflow: 'hidden',
-    textOverflow: 'ellipsis',
   },
   header: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    paddingBottom: '5px',
+    borderBottom: '1px solid darkgrey',
   },
   title: {
-    fontWeight: 'bold',
-  },
-  date: {
-    fontWeight: '100',
-  },
-  summary: {
-    // lineHeight: '1.3em',
-    // overflow: 'hidden',
-    // textOverflow: 'ellipsis',
-  },
-  summaryParagraph: {
-    lineHeight: '1.3em',
-    height: '10.2em',
+    color: 'black',
+    fontSize: '18px',
+    width: '100%',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
+  },
+  date: {
+    flexWrap: 'nowrap',
+    fontSize: '12px',
+    color: 'silver',
+    fontWeight: '100',
+  },
+  summaryBox: {
+    fontSize: '15px',
+    lineHeight: '1.2em',
+    height: '6.2em',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    color: 'grey',
+  },
+  readMore: {
+    fontSize: '12px',
+    color: 'silver',
+  },
+  tagBox: {
+    fontSize: '14px',
+    justifySelf: 'flex-end',
+  },
+  tags: {
+    color: 'mediumaquamarine'
   },
 };

@@ -1,12 +1,20 @@
 import React from 'react';
 
-var AboutBox = function(props) {
+var height = '10px';
+
+var AboutBox = (props) => {
   var fixedStyle = {};
   for (var key in props.styles.boxContainer) { fixedStyle[key] = props.styles.boxContainer[key]; }
   fixedStyle.position = 'fixed';
-  fixedStyle.width = '20em';
+  fixedStyle.width = '18em';
   // props.styles.boxContainer.position = 'fixed'; // write blog post about the results of this action
   // props.styles.boxContainer.width = '20em'; // write blog post about the results of this action
+
+  // eventually fix this element to scroll to bottom but not past.. must think about how to replace fixe positioning..
+
+  var isOverflowed = (element) => {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+  };
 
   return (
     <div id={'aboutContainer'} style={fixedStyle}>
@@ -57,7 +65,7 @@ const styles = {
     marginTop: '5em',
   },
   aboutHeader: {
-    marginTop: '5px',
+    // marginTop: '5px',
     fontSize: '20px',
     fontWeight: 'bold',
     color: '#1cb06d',

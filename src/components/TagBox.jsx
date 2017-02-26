@@ -1,10 +1,8 @@
 import React from 'react';
 import Tag from './Tag.jsx';
 
-var TagBox = function(props) {
+var TagBox = (props) => {
   var tags = props.tags;
-
-
 
   return (
     <div style={props.styles.boxContainer}>

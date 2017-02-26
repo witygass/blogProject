@@ -10,7 +10,6 @@ class Tag extends React.Component {
   }
 
   toggleTag() {
-    // console.log(this.props.tagKey); // fix this line.. not logging text of the tag
     this.props.toggleTagSelection(this.props.tagKey); //toggle from parent; add to object
     var toggled = !this.state.toggled;
     this.setState({toggled});
@@ -32,6 +31,7 @@ export default Tag;
 
 const styles = {
   contentContainer: {
+    fontSize: '14px',
     margin: '2px 3px',
     padding: '3px 6px',
     display: 'flex',
@@ -42,9 +42,10 @@ const styles = {
     backgroundColor: 'rosybrown',
     borderRadius: '3px',
     color: 'white',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 6px 0 rgba(0, 0, 0, 0.19)',
+    boxShadow: '0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 3px 5px 0 rgba(0, 0, 0, 0.13)',
   },
   contentContainerToggled: {
+    fontSize: '14px',
     margin: '2px 3px',
     padding: '3px 6px',
     display: 'flex',
@@ -52,9 +53,9 @@ const styles = {
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     flexWrap: 'wrap',
-    backgroundColor: 'lightcoral',
+    backgroundColor: 'lightsalmon',
     borderRadius: '2px',
     color: 'white',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 6px 0 rgba(0, 0, 0, 0.19)',
+    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 3px 5px 0 rgba(0, 0, 0, 0.13)',
   },
 };

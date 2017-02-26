@@ -1,6 +1,6 @@
 import React from 'react';
 
-var HeaderBox = function(props) {
+var HeaderBox = (props) => {
   return (
     <div style={styles.headerContainer}>
       {props.text}
@@ -25,6 +25,7 @@ const styles = {
     color: 'white',
     fontWeight: '900',
     fontSize: '20px',
-    boxShadow: '0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+    // boxShadow: '0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 3px 5px 0 rgba(0, 0, 0, 0.13)',
   },
 };

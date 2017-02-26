@@ -38,21 +38,18 @@ class Home extends React.Component {
   }
 
   filterPosts() {
-    //still not quite working... why does post 5 show.. does not contain 'sad'
     var filteredPosts = Array.from(myPosts);
     var selectedTags = this.state.selectedTags;
     if (this.state.selectedTags.length !== 0) {
       for (let i = filteredPosts.length - 1; i >= 0; i--) {
         for (let j = 0; j < selectedTags.length; j++) {
           if (filteredPosts[i]['tags'].indexOf(selectedTags[j]) === -1) {
-            // console.log(filteredPosts[i]);
-            console.log(i, filteredPosts.splice(i, 1));
+            filteredPosts.splice(i, 1);
             break;
           }
         }
       }
     }
-    // console.log(filteredPosts);
     this.setState({filteredPosts});
   }
 
@@ -85,7 +82,7 @@ const styles = {
   container: {
     display: 'inline-flex',
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     alignItems: 'stretch',
     minHeight: '100%',
     width: '100%',
@@ -96,9 +93,8 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-end',
-    width: '20%',
+    width: '18em',
     minWidth: '15em',
-    // marginLeft: '1em',
   },
   middleColumn: {
     display: 'flex',
@@ -106,16 +102,16 @@ const styles = {
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '55%',
-    minWidth: '30em',
-    // marginLeft: '1em',
+    minWidth: '33em',
+    maxWidth: '40em',
   },
   rightColumn: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    minWidth: '20em',
-    maxWidth: '25em',
+    width: '18em',
+    // minWidth: '18em',
     marginRight: '2em',
   },
 };
@@ -128,9 +124,8 @@ const childrenBoxStyles = {
     border: '1px solid lightgrey',
     // borderRadius: '4px',
     width: '90%',
-    minHeight: '10em',
     marginTop: '1em',
     backgroundColor: 'white',
-    boxShadow: '0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 4px 18px 0 rgba(0, 0, 0, 0.19)',
+    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 4px 6px 0 rgba(0, 0, 0, 0.13)',
   },
 };

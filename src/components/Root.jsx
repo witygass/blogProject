@@ -11,6 +11,7 @@ class Root extends React.Component {
     this.state = {
       page: 'home',
       searchValue: '',
+      selectPost: '',
     };
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -28,7 +29,8 @@ class Root extends React.Component {
     var pageContent = {
       home: <Home/>,
       blog: <Blog/>,
-      projects: <Projects/>
+      projects: <Projects/>,
+      // postview: <PostView/>,
     };
 
     return (
@@ -52,7 +54,7 @@ const styles = {
   },
   contentContainer: {
     marginTop: '3em',
-    minHeight: '100%',  //this causes the margin top to break
+    minHeight: '100%',  //this caused the margin top to break
     width: '100%',
     flex: '1 auto',
     display: 'inline-flex',

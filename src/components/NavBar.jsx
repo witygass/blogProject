@@ -2,8 +2,15 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import SearchBox from './SearchBox.jsx';
 
-var NavBar = function(props) {
-  const menuOptions = ['home', 'blog', 'projects'];
+// var Link = function() {
+// add this for the links so that on focus will stay black
+//   return (
+//     <div></div>
+//   );
+// };
+
+var NavBar = (props) => {
+  const menuOptions = ['home', 'blog', 'projects', 'about'];
   const socialOptions = [{logo: 'linkedin', url: 'http://www.linkedin.com/in/tylergassman'}, {logo: 'facebook', url: 'http://www.facebook.com/sincerely.tyler'}, {logo: 'github', url: 'http://www.github.com/witygass'}, {logo: 'angellist', url: 'http://www.angel.co/witygass'}];
 
   var linkToMedia = (url) => {
@@ -52,14 +59,14 @@ const styles = {
     top: '0',
     width: '100%',
     height: '3em',
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'stretch',
     justifyContent: 'flex-start',
-    color: 'silver',
-    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-    borderBottom: '2px solid #7beab8',
+    color: 'darkgrey',
+    // boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 3px 5px 0 rgba(0, 0, 0, 0.13)',
+    borderBottom: '1px solid gainsboro',
   },
   left: {
     display: 'flex',
@@ -87,7 +94,7 @@ const styles = {
     justifyContent: 'flex-end',
   },
   menuOption: {
-    width: '7em',
+    width: '6em',
     textAlign: 'center',
     verticalAlign: 'middle',
     lineHeight: '3em',
