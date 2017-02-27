@@ -5,6 +5,7 @@ import Home from './Home.jsx';
 import PostView from './PostView.jsx';
 import Blog from './Blog.jsx';
 import Projects from './Projects.jsx';
+import About from './About.jsx';
 
 class Root extends React.Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class Root extends React.Component {
       home: <Home handlePageChange={this.handlePageChange}/>,
       blog: <Blog handlePageChange={this.handlePageChange}/>,
       projects: <Projects handlePageChange={this.handlePageChange}/>,
+      about: <About handlePageChange={this.handlePageChange}/>,
       postView: <PostView selectedPost={this.state.selectedPost}/>,
     };
 

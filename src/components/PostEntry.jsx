@@ -86,6 +86,7 @@ const styles = {
     textOverflow: 'ellipsis',
   },
   date: {
+    marginTop: '3px',
     flexWrap: 'nowrap',
     fontSize: '12px',
     color: 'silver',

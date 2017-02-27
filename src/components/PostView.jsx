@@ -11,7 +11,7 @@ class PostView extends React.Component {
   render() {
     return (
       <div className={'postViewContainer'}>
-        <Parallax bgImage={this.props.selectedPost.image} bgWidth={'100%'} strength={200}>
+        <Parallax bgImage={this.props.selectedPost.image} bgHeight={'40%'} bgWidth={'100%'} strength={200}>
           <br/>
           <div style={styles.container}>
             <div style={styles.leftColumn}>
