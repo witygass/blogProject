@@ -1,4 +1,5 @@
 import React from 'react';
+import { Parallax } from 'react-parallax';
 
 class PostView extends React.Component {
   constructor(props) {
@@ -8,20 +9,29 @@ class PostView extends React.Component {
   }
 
   render() {
-    console.log('postview opening');
     return (
-      <div className={'postViewContainer'} style={styles.container}>
-        <div style={styles.leftColumn}>
-        </div>
-        <div style={styles.middleColumn}>
-          {this.props.selectedPost.title}
-        </div>
-        <div style={styles.rightColumn}>
-        </div>
+      <div className={'postViewContainer'}>
+        <Parallax bgImage={this.props.selectedPost.image} bgWidth={'100%'} strength={200}>
+          <br/>
+          <div style={styles.container}>
+            <div style={styles.leftColumn}>
+            </div>
+            <div style={styles.middleColumn}>
+              <div style={styles.postBody}>
+                {this.props.selectedPost.body}
+              </div>
+            </div>
+            <div style={styles.rightColumn}>
+            </div>
+          </div>
+        </Parallax>
       </div>
     );
   }
 }
+
+// <div className={'postViewContainer'} style={styles.container}>
+// </div>
 
 export default PostView;
 
@@ -31,7 +41,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'stretch',
-    minHeight: '100%',
+    height: '100%',
     width: '100%',
     paddingBottom: '2em',
   },
@@ -40,26 +50,26 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-end',
-    width: '18em',
-    minWidth: '15em',
+    flex: '1',
   },
   middleColumn: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    alignItems: 'center',
-    width: '55%',
-    minWidth: '33em',
-    maxWidth: '40em',
+    alignItems: 'stretch',
+    flex: '3',
   },
   rightColumn: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    width: '18em',
-    // minWidth: '18em',
-    marginRight: '2em',
+    flex: '1',
+  },
+  postBody: {
+    backgroundColor: 'rgba(255,255,255,.9) ',
+    flex: '1',
+    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 4px 6px 0 rgba(0, 0, 0, 0.13)',
   },
 };
 

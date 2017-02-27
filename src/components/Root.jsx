@@ -25,6 +25,10 @@ class Root extends React.Component {
   handlePageChange(page) {
     var selectedPost = arguments[1] || '';
     this.setState({selectedPost}, this.setState({page}));
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+    //write a blog post about this stupid small-gong moment.. could not figure out why top margin was not showing..
+    // it was there, but page was scrolled down, decided it's a good idea to scroll to top on page change
   }
 
   render() {
@@ -32,7 +36,7 @@ class Root extends React.Component {
       home: <Home handlePageChange={this.handlePageChange}/>,
       blog: <Blog handlePageChange={this.handlePageChange}/>,
       projects: <Projects handlePageChange={this.handlePageChange}/>,
-    postView: <PostView selectedPost={this.state.selectedPost}/>,
+      postView: <PostView selectedPost={this.state.selectedPost}/>,
     };
 
     return (
@@ -56,13 +60,12 @@ const styles = {
   },
   contentContainer: {
     marginTop: '3em',
-    minHeight: '100%',  //this caused the margin top to break
+    minHeight: 'calc(100% - 10em)',
     width: '100%',
-    flex: '1 auto',
-    display: 'inline-flex',
+    display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-around',
+    alignItems: 'center',
     backgroundColor: 'whitesmoke',
   },
 };

@@ -84,7 +84,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'stretch',
-    minHeight: '100%',
+    // minHeight: '100%',
     width: '100%',
     paddingBottom: '2em',
   },

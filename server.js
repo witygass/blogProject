@@ -16,6 +16,8 @@ app.use(webpackDevMiddleware(compiler, {
   historyApiFallback: true,
 }));
 
+app.use(require('webpack-hot-middleware')(compiler));
+
 app.use(express.static(__dirname + '/client'));
 
 const server = app.listen(3000, () => {
