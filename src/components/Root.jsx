@@ -34,11 +34,11 @@ class Root extends React.Component {
 
   render() {
     var pageContent = {
-      home: <Home handlePageChange={this.handlePageChange}/>,
-      blog: <Blog handlePageChange={this.handlePageChange}/>,
-      projects: <Projects handlePageChange={this.handlePageChange}/>,
-      about: <About handlePageChange={this.handlePageChange}/>,
-      postView: <PostView selectedPost={this.state.selectedPost}/>,
+      home: <Home handlePageChange={this.handlePageChange} childrenStyles={childrenStyles}/>,
+      blog: <Blog handlePageChange={this.handlePageChange} childrenStyles={childrenStyles}/>,
+      projects: <Projects handlePageChange={this.handlePageChange} childrenStyles={childrenStyles}/>,
+      about: <About handlePageChange={this.handlePageChange} childrenStyles={childrenStyles}/>,
+      postView: <PostView handlePageChange={this.handlePageChange} selectedPost={this.state.selectedPost} childrenStyles={childrenStyles}/>,
     };
 
     return (
@@ -62,12 +62,26 @@ const styles = {
   },
   contentContainer: {
     marginTop: '3em',
-    minHeight: 'calc(100% - 10em)',
+    minHeight: 'calc(100% - 3em)',
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     backgroundColor: 'whitesmoke',
+  },
+};
+
+const childrenStyles = {
+  boxContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    overflow: 'hidden',
+    border: '1px solid lightgrey',
+    // borderRadius: '4px',
+    width: '90%',
+    marginTop: '1em',
+    backgroundColor: 'white',
+    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 4px 6px 0 rgba(0, 0, 0, 0.13)',
   },
 };

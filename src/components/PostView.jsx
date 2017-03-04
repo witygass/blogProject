@@ -1,5 +1,6 @@
 import React from 'react';
-import { Parallax } from 'react-parallax';
+import ResponseBox from './ResponseBox.jsx';
+// import { Parallax, Background} from 'react-parallax';
 
 class PostView extends React.Component {
   constructor(props) {
@@ -11,39 +12,40 @@ class PostView extends React.Component {
   render() {
     return (
       <div className={'postViewContainer'}>
-        <Parallax bgImage={this.props.selectedPost.image} bgHeight={'40%'} bgWidth={'100%'} strength={200}>
-          <br/>
-          <div style={styles.container}>
-            <div style={styles.leftColumn}>
-            </div>
-            <div style={styles.middleColumn}>
-              <div style={styles.postBody}>
-                {this.props.selectedPost.body}
-              </div>
-            </div>
-            <div style={styles.rightColumn}>
+        <div style={{display: 'flex', flexDirection: 'column', height: '35%', justifyContent: 'center', overflow: 'hidden'}}>
+          <img src={this.props.selectedPost.image} style={{width: '100%'}}/>
+        </div>
+        <div style={styles.container}>
+          <div style={styles.leftColumn}>
+          </div>
+          <div style={styles.middleColumn}>
+            <div style={styles.postBody}>
+              {this.props.selectedPost.body}
+              <ResponseBox />
             </div>
           </div>
-        </Parallax>
+          <div style={styles.rightColumn}>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-// <div className={'postViewContainer'} style={styles.container}>
-// </div>
 
 export default PostView;
 
 const styles = {
   container: {
+    // marginTop: '1em',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'stretch',
-    height: '100%',
+    height: '65%',
     width: '100%',
-    paddingBottom: '2em',
+    backgroundColor: 'white',
+    // paddingBottom: '2em',
   },
   leftColumn: {
     display: 'flex',
@@ -57,7 +59,7 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-    flex: '3',
+    flex: '2',
   },
   rightColumn: {
     display: 'flex',
@@ -67,9 +69,11 @@ const styles = {
     flex: '1',
   },
   postBody: {
-    backgroundColor: 'rgba(255,255,255,.9) ',
+    marginTop: '5px',
+    backgroundColor: 'white',
     flex: '1',
-    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 4px 6px 0 rgba(0, 0, 0, 0.13)',
+    lineHeight: '1.75em',
+    // boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 4px 6px 0 rgba(0, 0, 0, 0.13)',
   },
 };
 

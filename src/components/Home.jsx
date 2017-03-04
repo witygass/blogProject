@@ -58,18 +58,18 @@ class Home extends React.Component {
       <div className={'homePageContainer'} style={styles.container}>
         <div style={styles.leftColumn}>
           <HeaderBox text={'Tags'} />
-          <TagBox styles={childrenBoxStyles} tags={this.collectTags()} toggleTagSelection={this.toggleTagSelection} />
+          <TagBox styles={this.props.childrenStyles} tags={this.collectTags()} toggleTagSelection={this.toggleTagSelection} />
         </div>
         <div style={styles.middleColumn}>
           <HeaderBox text={'Recent Posts'} />
           {
             this.state.filteredPosts.map((post) =>
-              <PostEntry key={post.id} post={post} styles={childrenBoxStyles} handlePageChange={this.props.handlePageChange.bind(null, 'postView', post)}/>
+              <PostEntry key={post.id} post={post} styles={this.props.childrenStyles} handlePageChange={this.props.handlePageChange.bind(null, 'postView', post)}/>
             )
           }
         </div>
         <div style={styles.rightColumn}>
-          <AboutBox styles={childrenBoxStyles} />
+          <AboutBox styles={this.props.childrenStyles} />
         </div>
       </div>
     );
@@ -113,19 +113,5 @@ const styles = {
     width: '18em',
     // minWidth: '18em',
     marginRight: '2em',
-  },
-};
-
-const childrenBoxStyles = {
-  boxContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    overflow: 'hidden',
-    border: '1px solid lightgrey',
-    // borderRadius: '4px',
-    width: '90%',
-    marginTop: '1em',
-    backgroundColor: 'white',
-    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 4px 6px 0 rgba(0, 0, 0, 0.13)',
   },
 };

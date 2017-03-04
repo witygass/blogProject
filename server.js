@@ -3,6 +3,11 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const app = express();
+// var elasticsearch = require('elasticsearch');
+// var client = new elasticsearch.Client({
+//   host: 'localhost: 9200',
+//   log: 'trace'
+// });
 
 const compiler = webpack(webpackConfig);
 
