@@ -54,6 +54,7 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log("Hello World!");
     return (
       <div className={'homePageContainer'} style={styles.container}>
         <div style={styles.leftColumn}>
