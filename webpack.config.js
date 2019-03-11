@@ -1,30 +1,33 @@
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  context: path.join(__dirname, 'src'),
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:8080',
-    'webpack/hot/only-dev-server',
-    './main.jsx',
+      'webpack-dev-server/client?http://0.0.0.0:8080',
+      'webpack/hot/only-dev-server',
+      './src/main.jsx'
   ],
   output: {
-    path: path.join(__dirname, 'client'),
-    filename: 'bundle.js',
+      path: path.join(__dirname, 'client'),
+      filename: 'bundle.js',
   },
   module: {
-    rules: [
+    loaders: [
+      {
+        test: /\.html$/,
+        loader: 'file-loader?name=[name].[ext]',
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: [
-          'react-hot-loader', 'babel-loader',
-        ],
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
+        }
       },
     ],
   },
-  resolve: {
-    modules: [
-      path.join(__dirname, 'node_modules')
-    ],
-  },
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+  ]
 };
